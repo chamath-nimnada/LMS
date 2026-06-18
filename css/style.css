@@ -1,0 +1,141 @@
+:root {
+    --brand-color: #925c19;
+    --dark-bg: #1e2532;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    background-color: transparent;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.text-brand {
+    color: var(--brand-color);
+}
+
+.btn-brand {
+    background-color: var(--brand-color);
+    color: white;
+    font-weight: 500;
+}
+
+.btn-brand:hover {
+    background-color: #7a4b13;
+    color: white;
+}
+
+.btn-outline-brand {
+    border: 1px solid #ccc;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn-outline-brand:hover {
+    background-color: #e9ecef;
+}
+
+.bg-brand {
+    background-color: var(--brand-color);
+    color: white;
+}
+
+.bg-dark-custom {
+    background-color: var(--dark-bg);
+}
+
+/* Layout Utilities Replacing Inline CSS */
+.max-w-700 {
+    max-width: 700px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+/* Lottie Background */
+.lottie-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Bento Grid Styling */
+.bento-card {
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #eaeaea;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-bg-img {
+    background-image: url('https://placehold.co/800x400/e2e8f0/a0aec0?text=Auditorium');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 300px;
+}
+
+.bento-inner-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    max-width: 60%;
+}
+
+.teacher-img {
+    border-radius: 12px;
+    width: 100%;
+    max-width: 150px;
+    object-fit: cover;
+}
+
+.hero-sec {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Your real image background */
+.hero-image-layer {
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/hero-bg.jpg");
+    /* change to your image path */
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+/* Lottie overlay above image */
+.lottie-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+}
+
+.lottie-bg lottie-player {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.08);
+    transform-origin: center;
+}
+
+/* Keep text/buttons above overlay */
+.hero-sec>.container {
+    position: relative;
+    z-index: 2;
+}
