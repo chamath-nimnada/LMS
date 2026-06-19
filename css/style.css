@@ -1,12 +1,27 @@
 :root {
-    --brand-color: #925c19;
+    --brand-color: #047648;
+    --brand-color-hover: #0d5f58;
+    --brand-color-rgb: 4, 118, 72;
+    /* For transparent effects using your green */
     --dark-bg: #1e2532;
     --light-bg: #f8f9fa;
+    --border-color: #eaeaea;
+    /* Added for dashboard layout */
 }
 
 body {
     background-color: transparent;
     font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.a-btn {
+    transition: color 0.3s ease;
+}
+
+.a-btn:hover {
+    background-color: var(--brand-color-hover) !important;
 }
 
 .text-brand {
@@ -20,7 +35,7 @@ body {
 }
 
 .btn-brand:hover {
-    background-color: #7a4b13;
+    background-color: var(--brand-color-hover);
     color: white;
 }
 
@@ -28,6 +43,7 @@ body {
     border: 1px solid #ccc;
     color: #333;
     font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .btn-outline-brand:hover {
@@ -43,7 +59,7 @@ body {
     background-color: var(--dark-bg);
 }
 
-/* Layout Utilities Replacing Inline CSS */
+/* Layout Utilities */
 .max-w-700 {
     max-width: 700px;
 }
@@ -52,30 +68,32 @@ body {
     flex: 1;
 }
 
-/* Lottie Background */
-.lottie-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: fit-content;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
+/* Glassmorphism Styling for Premium Feel */
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 /* Bento Grid Styling */
 .bento-card {
-    border-radius: 12px;
-    background: white;
-    border: 1px solid #eaeaea;
+    border-radius: 16px;
     height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .bento-bg-img {
-    background-image: url('https://placehold.co/800x400/e2e8f0/a0aec0?text=Auditorium');
+    background-image: url('../img/card-bg-1.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -83,59 +101,434 @@ body {
 }
 
 .bento-inner-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
     padding: 1.5rem;
     position: absolute;
     bottom: 20px;
     left: 20px;
-    max-width: 60%;
+    max-width: 70%;
 }
 
 .teacher-img {
-    border-radius: 12px;
-    width: 100%;
-    max-width: 150px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.badge-marketing {
+    background: #bfecdb;
+    color: var(--brand-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
 .hero-sec {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    isolation: isolate;
-}
-
-/* Your real image background */
-.hero-image-layer {
-    position: absolute;
-    inset: 0;
-    background-image: url("../images/hero-bg.jpg");
-    /* change to your image path */
+    background-image: url('../img/hero-bg-1.jpeg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    z-index: 0;
+    height: 80vh;
 }
 
-/* Lottie overlay above image */
-.lottie-bg {
+/* Specific Timetable Styles */
+.nav-pills .nav-link {
+    color: var(--dark-bg);
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--brand-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--brand-color-rgb), 0.3);
+}
+
+.schedule-card {
+    border-left: 5px solid var(--brand-color);
+    transition: transform 0.2s ease;
+}
+
+.schedule-card:hover {
+    transform: translateX(10px);
+}
+
+/* Authentication Cards */
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-control-glass {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control-glass:focus {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--brand-color-rgb), 0.25);
+}
+
+/* Dashboard Layout Specifics */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling & Minimized State */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    border-right: 1px solid var(--border-color);
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sidebar.minimized {
+    width: 80px;
+}
+
+.sidebar.minimized .hide-on-min {
+    display: none;
+}
+
+.sidebar.minimized .sidebar-profile {
+    justify-content: center;
+    padding: 1.5rem 0;
+}
+
+.sidebar.minimized .nav-link {
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--brand-color);
+    white-space: nowrap;
+}
+
+.sidebar-profile {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.profile-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-sidebar {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.nav-sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    border-right: 4px solid transparent;
+}
+
+.nav-sidebar .nav-link i {
+    font-size: 1.25rem;
+    min-width: 35px;
+    text-align: center;
+}
+
+.nav-sidebar .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.nav-sidebar .nav-link.active {
+    background-color: rgba(var(--brand-color-rgb), 0.08);
+    color: var(--brand-color) !important;
+    border-right-color: var(--brand-color);
+}
+
+/* Dashboard Main Content Area */
+.dashboard-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: var(--light-bg);
+}
+
+.dashboard-topbar {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+}
+
+.search-wrapper i {
     position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    opacity: 0.92;
+    left: 1rem;
+    color: #888;
 }
 
-.lottie-bg lottie-player {
+.search-input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    background-color: var(--light-bg);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--brand-color);
+}
+
+.topbar-actions .btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.topbar-actions .btn-icon:hover {
+    color: var(--brand-color);
+}
+
+/* Dashboard Cards & Progress */
+.dashboard-content {
+    padding: 2rem;
+    flex: 1;
+}
+
+.dash-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-card-img-wrapper {
+    position: relative;
+}
+
+.dash-card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.dash-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.badge-must {
+    color: #d9534f;
+    border: 1px solid #d9534f;
+}
+
+.badge-should {
+    color: #555;
+    border: 1px solid #555;
+}
+
+.progress-track {
+    background-color: #e9ecef;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 6px;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    background-color: var(--brand-color);
+    height: 100%;
+}
+
+/* Completed Courses Row */
+.completed-row {
+    background-color: var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.completed-icon-wrapper {
+    background-color: rgba(var(--brand-color-rgb), 0.15);
+    color: var(--brand-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.playlist-item:hover {
+    background: rgba(var(--brand-color-rgb), 0.03);
+}
+
+.playlist-item.active {
+    background: rgba(var(--brand-color-rgb), 0.08);
+    border-left: 4px solid var(--brand-color);
+}
+
+.playlist-item.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.resource-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.video-container {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+}
+
+.video-container iframe {
     width: 100%;
     height: 100%;
-    transform: scale(1.08);
-    transform-origin: center;
+    border: 0;
 }
 
-/* Keep text/buttons above overlay */
-.hero-sec>.container {
-    position: relative;
-    z-index: 2;
+/* Teacher Dashboard Specifics */
+.teacher-stat-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.teacher-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(var(--brand-color-rgb), 0.1);
+    color: var(--brand-color);
+}
+
+.trend-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50px;
+}
+
+.trend-up {
+    background: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.workspace-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: border-color 0.2s ease;
+    cursor: pointer;
+}
+
+.workspace-card:hover {
+    border-color: var(--brand-color);
+}
+
+.activity-feed-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-feed-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    color: #555;
+    flex-shrink: 0;
 }
